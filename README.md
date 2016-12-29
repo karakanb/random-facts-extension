@@ -10,7 +10,12 @@ In order to use it locally, just clone the repository and open the index.html fi
 
 In order to test it as an extension and improve it: 
 
-`1 - Navigate to 'chrome://extensions'.`
-`2 - Expand the developer dropdown menu and click "Load Unpacked Extension".`
-`3 - Navigate to local folder and select the folder as the sourceç`
-`4 - Assuming there are no errors, the extension should load into your browser.`
+- Get your key from Mashape.<sup>[1][1]</sup>
+- Insert the key you obtained to the `GetFact.js` file, instead of the placeholder `<YOUR_MASHAPE_API_KEY_HERE>`.
+- Navigate to `chrome://extensions`.   
+- Expand the developer dropdown menu and click "Load Unpacked Extension".    
+- Navigate to local folder and select the folder as the source.    
+- Assuming there are no errors, the extension should load into your browser.    
+
+[1]: http://docs.mashape.com/api-keys
+   

@@ -12,7 +12,7 @@ var random = types[randomIndex];
 
 // Construct the header object.
 requestHeader = new Headers({
-    "X-Mashape-Authorization": "<YOUR_MASHAPE_API_KEY>"
+    "X-Mashape-Authorization": "<YOUR_MASHAPE_API_KEY_HERE>"
 });
 
 // Construct the request object.
