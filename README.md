@@ -4,18 +4,18 @@
 
 [Install it to Google Chrome from Chrome Store.](https://goo.gl/hBkcKR)
 
-The extension uses the Numbers API from the Mashape for the facts and the Unsplash API for the beautiful high quality background images.
+The extension uses the Numbers API from the RapidAPI for the facts and the Unsplash API for the beautiful high quality background images.
 
 In order to use it locally, just clone the repository and open the index.html file in Google Chrome. 
 
 In order to test it as an extension and improve it: 
 
-- Get your API key from Mashape.<sup>[1][1]</sup>
-- Insert the key you obtained to the `GetFact.js` file, instead of the placeholder `<YOUR_MASHAPE_API_KEY_HERE>`.
+- Get your API key from RapidAPI.<sup>[1][1]</sup>
+- Insert the key you obtained to the `GetFact.js` file, instead of the placeholder `<YOUR_RAPIDAPI_KEY_HERE>`.
 - Navigate to `chrome://extensions`.   
 - Expand the developer dropdown menu and click "Load Unpacked Extension".    
 - Navigate to local folder and select the folder as the source.    
 - Assuming there are no errors, the extension should load into your browser.    
 
-[1]: http://docs.mashape.com/api-keys
+[1]: https://docs.rapidapi.com/docs/keys
    

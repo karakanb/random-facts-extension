@@ -1,57 +1,57 @@
 var niceWords = [
-                "you look amazing today!",
-                "what is your secret to look that good?",
-                "did you cut your hair? Looks fantastic!",
-                "what a lovely day, isn't it?",
-                "here is a fact: if you had a twin, I would still choose you.",
-                "you are the nicest person I have ever seen!"
-                ]
-var types = ["trivia", "date", "math", "year" ];
+    "you look amazing today!",
+    "what is your secret to look that good?",
+    "did you cut your hair? Looks fantastic!",
+    "what a lovely day, isn't it?",
+    "here is a fact: if you had a twin, I would still choose you.",
+    "you are the nicest person I have ever seen!"
+]
+var types = ["trivia", "date", "math", "year"];
 var randomIndex = Math.floor((Math.random() * 3));
 var random = types[randomIndex];
 
 // Construct the header object.
 requestHeader = new Headers({
-    "X-Mashape-Authorization": "<YOUR_MASHAPE_API_KEY_HERE>"
+    "X-RapidAPI-Key": "<YOUR_RAPIDAPI_KEY_HERE>"
 });
 
 // Construct the request object.
-var factRequest = new Request("https://numbersapi.p.mashape.com/random/" + random + "?fragment=true&json=true", { 
+var factRequest = new Request("https://numbersapi.p.rapidapi.com/random/" + random + "?fragment=true&json=true", {
     method: 'GET',
-    headers: requestHeader 
+    headers: requestHeader
 });
 
 fetch(factRequest)
     .then(
-        function(response) {
-          if (response.status !== 200) {  
-            PrintError();
-            return;  
-          }
-
-          // Examine the text in the response  
-          response.json().then(function(data) {  
-            var factString = data.text;
-            var supScript = "{";
-            var position = factString.indexOf(supScript);
-
-            if(position != -1){
-                factString = ProcessSuperscript(factString, position);
-                UpdateFieldHTML("fact", factString + ".");
-            } else {
-                UpdateFieldWithNodeValue("fact", factString + ".");
+        function (response) {
+            if (response.status !== 200) {
+                PrintError();
+                return;
             }
 
+            // Examine the text in the response  
+            response.json().then(function (data) {
+                var factString = data.text;
+                var supScript = "{";
+                var position = factString.indexOf(supScript);
 
-            if(randomIndex == 1){
-                UpdateFieldWithNodeValue("number", data.year + ", ");
-            } else{
-                UpdateFieldWithNodeValue("number", data.number + ", ");
-            }
-          });  
+                if (position != -1) {
+                    factString = ProcessSuperscript(factString, position);
+                    UpdateFieldHTML("fact", factString + ".");
+                } else {
+                    UpdateFieldWithNodeValue("fact", factString + ".");
+                }
+
+
+                if (randomIndex == 1) {
+                    UpdateFieldWithNodeValue("number", data.year + ", ");
+                } else {
+                    UpdateFieldWithNodeValue("number", data.number + ", ");
+                }
+            });
         }
     )
-    .catch(function(err) {  
+    .catch(function (err) {
         PrintError();
     })
 
@@ -67,16 +67,16 @@ function UpdateFieldHTML(id, value) {
 }
 
 function PrintError() {
-    var randomWordingIndex = Math.floor((Math.random() * (niceWords.length -1)));
+    var randomWordingIndex = Math.floor((Math.random() * (niceWords.length - 1)));
     var randomWording = niceWords[randomWordingIndex];
     UpdateFieldWithNodeValue("fact", 'Looks like your internet connection is down. Anyway, ' + randomWording);
 }
 
-function ProcessSuperscript(factString, position){
+function ProcessSuperscript(factString, position) {
 
     factString = factString.replace("^{", '<sup>');
     factString = factString.replace("}", '</sup>');
-    
+
     var matches = occurrences(factString, "^{");
     for (var i = 0; i < matches; i++) {
         factString = factString.replace("^{", '<sup>');
@@ -117,17 +117,17 @@ function occurrences(string, subString, allowOverlapping) {
 
 // Process and return the most visited 5 URLs.
 function GetMostVisitedURLs(mostVisitedURLs) {
-  var mostVisitedDiv = document.getElementById('mostVisitedURLs');
-  var ul = mostVisitedDiv.appendChild(document.createElement('ul'));
-  var a, div, urlTitle;
-  for (var i = 0; i < 5; i++) {
-    a = ul.appendChild(document.createElement('a'));
-    div = a.appendChild(document.createElement('div'));
-    urlTitle = mostVisitedURLs[i].title;
-    a.href = mostVisitedURLs[i].url;
-    div.appendChild(document.createTextNode(urlTitle.substring(0,25)));
-  }
-  mostVisitedDiv.appendChild(document.createElement('hr'));
+    var mostVisitedDiv = document.getElementById('mostVisitedURLs');
+    var ul = mostVisitedDiv.appendChild(document.createElement('ul'));
+    var a, div, urlTitle;
+    for (var i = 0; i < 5; i++) {
+        a = ul.appendChild(document.createElement('a'));
+        div = a.appendChild(document.createElement('div'));
+        urlTitle = mostVisitedURLs[i].title;
+        a.href = mostVisitedURLs[i].url;
+        div.appendChild(document.createTextNode(urlTitle.substring(0, 25)));
+    }
+    mostVisitedDiv.appendChild(document.createElement('hr'));
 }
 
 // Get the most visited URLs from the browser.

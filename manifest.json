@@ -3,7 +3,7 @@
     "description": "Random facts about everything, history, math, science, and fun facts, with original high quality background images!",
     "author": "Burak Karakan",
     "short_name": "Random Facts",
-    "version": "2.1.0",
+    "version": "2.1.1",
     "manifest_version": 2,
     "icons": {"16": "images/icon-16.png",
               "32": "images/icon-32.png",
@@ -20,6 +20,6 @@
         }
       ],
      "permissions": [
-        "https://numbersapi.p.mashape.com/*", "topSites"
+        "https://numbersapi.p.rapidapi.com/*", "topSites"
       ]
 }
